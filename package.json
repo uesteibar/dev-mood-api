@@ -1,0 +1,43 @@
+{
+  "name": "twitter_dev_mood",
+  "version": "1.0.0",
+  "description": "Analyze what people tweets about programming languages and framework.",
+  "directories": {
+    "test": "test"
+  },
+  "engines": {
+    "node": ">=6.4"
+  },
+  "scripts": {
+    "test": "",
+    "watch": "webpack --watch-stdin --progress --color",
+    "lint:staged": "lint-staged",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
+    "deploy": "standard-version && git push dokku master && git push --follow-tags origin master"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^7.0.1",
+    "phoenix": "^1.2.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "webpack": "^2.5.1"
+  },
+  "devDependencies": {
+    "standard-version": "^4.0.0"
+  }
+}

@@ -1,0 +1,20 @@
+<div class="jumbotron">
+  <h2><%= gettext "Welcome to %{name}!", name: "TwitterDevMood" %></h2>
+  <p>The aim of this website is to analyze what people tweets about programming languages and framework.</p>
+
+  <div id="tweet-counter"></div>
+
+  <p>There's no real frontend for this so far, so for now you can go</p>
+  <h3>
+    <a href="/api/languages">here</a>
+  </h3>
+  <p>to see the results.</p>
+
+  <p>
+    You can also filter by tag by passing it in the url:
+    <code>/api/languages?tag=frontend</code>
+  </p>
+  <p>
+    You can see the available tags <a href="/api/tags">here</a>.
+  </p>
+</div>
