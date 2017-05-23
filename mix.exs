@@ -34,7 +34,8 @@ defmodule TwitterDevMood.Mixfile do
     :gettext,
     :phoenix_ecto,
     :postgrex,
-    :extwitter
+    :extwitter,
+    :quantum,
   ]
 
   # Specifies which paths to compile per environment.
@@ -59,6 +60,7 @@ defmodule TwitterDevMood.Mixfile do
       {:cowboy, "~> 1.0"},
       {:dotenv, "~> 2.0.0"},
       {:veritaserum, "~> 0.1.1"},
+      {:quantum, "~> 1.9"},
     ]
   end
 

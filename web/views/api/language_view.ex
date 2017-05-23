@@ -13,6 +13,9 @@ defmodule TwitterDevMood.Api.LanguageView do
       id: language.id,
       name: language.name,
       keywords: Enum.map(language.keywords, &(&1.keyword)),
+      statistics: Enum.map(language.statistics, fn statistic ->
+        %{ date: statistic.inserted_at, mood_avg: statistic.mood_avg }
+      end),
       type: language.type,
       occurrences: language.occurrences,
       moodAvg: (language.mood_avg) |> Float.round(4),

@@ -5,6 +5,7 @@ defmodule TwitterDevMood.Language do
 
   alias TwitterDevMood.Repo
   alias TwitterDevMood.Keyword
+  alias TwitterDevMood.Statistic
   alias TwitterDevMood.Tag
   alias TwitterDevMood.Language
 
@@ -14,6 +15,7 @@ defmodule TwitterDevMood.Language do
     field :mood, :integer
     field :occurrences, :integer
     has_many :keywords, Keyword
+    has_many :statistics, Statistic
     many_to_many :tags, Tag, join_through: "languages_tags"
 
     field :mood_avg, :float, virtual: true
@@ -55,6 +57,11 @@ defmodule TwitterDevMood.Language do
   def preload_tags(query \\ Language) do
     from l in query,
     preload: :tags
+  end
+
+  def preload_statistics(query \\ Language) do
+    from l in query,
+    preload: :statistics
   end
 
   def has_keywords(query, keywords) do

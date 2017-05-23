@@ -7,6 +7,7 @@ defmodule TwitterDevMood.Api.LanguageController do
     languages = Language
                 |> filter_languages(params)
                 |> Language.preload_keywords
+                |> Language.preload_statistics
                 |> Language.calculate_mood_avg
                 |> Repo.all
                 |> Enum.sort(&(&1.mood_avg > &2.mood_avg))

@@ -18,7 +18,8 @@ defmodule TwitterDevMood do
       # Start your own worker by calling: TwitterDevMood.Worker.start_link(arg1, arg2, arg3)
       # worker(TwitterDevMood.Worker, [arg1, arg2, arg3]),
       worker(TwitterDevMood.TwitterStream.Listener.Server, []),
-      worker(TwitterDevMood.TwitterStream.Processor.Server, [])
+      worker(TwitterDevMood.TwitterStream.Processor.Server, []),
+      worker(TwitterDevMood.Statistics.Server, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
@@ -28,6 +29,8 @@ defmodule TwitterDevMood do
 
     keywords = Repo.all(Keyword)
     TwitterDevMood.TwitterStream.Listener.Server.listen(keywords)
+
+    TwitterDevMood.Statistics.Scheduler.schedule_backups("0 23 * * *")
 
     process
   end
