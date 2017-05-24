@@ -7,7 +7,7 @@ defmodule TwitterDevMood.Api.StatisticView do
 
   def render("show.json", %{statistic: statistic}) do
     %{
-      timestamp: (statistic.inserted_at),
+      timestamp: format_date(statistic.inserted_at),
       moodAvg: format_mood_avg(statistic.mood_avg),
     }
   end
@@ -15,9 +15,8 @@ defmodule TwitterDevMood.Api.StatisticView do
   defp format_mood_avg(mood_avg), do: Float.round(mood_avg, 4)
 
   defp format_date(datetime) do
-    datetime
-    |> Ecto.DateTime.to_erl
-    |> :calendar.datetime_to_gregorian_seconds
-    |> Kernel.-(62167219200)
+    {:ok, date} = Ecto.DateTime.cast(datetime)
+
+    Ecto.DateTime.to_date(date)
   end
 end
