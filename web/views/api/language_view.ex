@@ -14,11 +14,16 @@ defmodule TwitterDevMood.Api.LanguageView do
       name: language.name,
       keywords: Enum.map(language.keywords, &(&1.keyword)),
       statistics: Enum.map(language.statistics, fn statistic ->
-        %{ date: statistic.inserted_at, mood_avg: statistic.mood_avg }
+        %{
+          date: statistic.inserted_at,
+          moodAvg: format_mood_avg(statistic.mood_avg),
+        }
       end),
       type: language.type,
       occurrences: language.occurrences,
-      moodAvg: (language.mood_avg) |> Float.round(4),
+      moodAvg: format_mood_avg(language.mood_avg),
     }
   end
+
+  defp format_mood_avg(mood_avg), do: Float.round(mood_avg, 4)
 end
