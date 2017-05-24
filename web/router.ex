@@ -17,6 +17,7 @@ defmodule TwitterDevMood.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", LanguageController, :index
+    get "/chart", LanguageController, :chart
   end
 
   # Other scopes may use custom stacks.
