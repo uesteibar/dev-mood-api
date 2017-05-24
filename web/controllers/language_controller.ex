@@ -4,4 +4,8 @@ defmodule TwitterDevMood.LanguageController do
   def index(conn, _params) do
     render conn, "index.html"
   end
+
+  def chart(conn, _params) do
+    render conn, "chart.html"
+  end
 end

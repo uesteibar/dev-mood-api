@@ -7,8 +7,9 @@ class TweetCounter extends Component {
     super(props)
     this.state = { count: 0 }
   }
+
   componentDidMount() {
-            const channel = socket.join('stats:languages')
+    const channel = socket.join('stats:languages')
 
     channel.on("update", payload => {
       this.setState({count: payload.total_occurrences})
