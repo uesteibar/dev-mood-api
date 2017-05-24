@@ -61,6 +61,7 @@ defmodule TwitterDevMood.Mixfile do
       {:dotenv, "~> 2.0.0"},
       {:veritaserum, "~> 0.1.1"},
       {:quantum, "~> 1.9"},
+      {:cors_plug, "~> 1.3"},
     ]
   end
 

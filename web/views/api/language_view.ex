@@ -22,13 +22,6 @@ defmodule TwitterDevMood.Api.LanguageView do
 
   defp format_mood_avg(mood_avg), do: Float.round(mood_avg, 4)
 
-  defp format_date(datetime) do
-    datetime
-    |> Ecto.DateTime.to_erl
-    |> :calendar.datetime_to_gregorian_seconds
-    |> Kernel.-(62167219200)
-  end
-
   defp render_statistics(statistics) do
     TwitterDevMood.Api.StatisticView.render("index.json", %{statistics: statistics})
   end

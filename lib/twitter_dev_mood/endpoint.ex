@@ -38,5 +38,7 @@ defmodule TwitterDevMood.Endpoint do
     key: "_twitter_dev_mood_key",
     signing_salt: "mdDuBr0o"
 
+  plug CORSPlug
+
   plug TwitterDevMood.Router
 end
