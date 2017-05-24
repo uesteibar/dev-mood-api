@@ -28,7 +28,7 @@ defmodule TwitterDevMood.Api.LanguageControllerTest do
           "name" => language.name,
           "type" => language.type,
           "moodAvg" => 5.0,
-          "statistics" => [],
+          "history" => [],
           "occurrences" => language.occurrences,
           "keywords" => ["#name", "@name"]
         }

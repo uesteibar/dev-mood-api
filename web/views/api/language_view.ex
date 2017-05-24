@@ -13,7 +13,7 @@ defmodule TwitterDevMood.Api.LanguageView do
       id: language.id,
       name: language.name,
       keywords: Enum.map(language.keywords, &(&1.keyword)),
-      statistics: render_statistics(language.statistics),
+      history: render_statistics(language.statistics),
       type: language.type,
       occurrences: language.occurrences,
       moodAvg: format_mood_avg(language.mood_avg),
