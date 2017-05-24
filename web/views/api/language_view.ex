@@ -13,12 +13,7 @@ defmodule TwitterDevMood.Api.LanguageView do
       id: language.id,
       name: language.name,
       keywords: Enum.map(language.keywords, &(&1.keyword)),
-      statistics: Enum.map(language.statistics, fn statistic ->
-        %{
-          date: statistic.inserted_at,
-          moodAvg: format_mood_avg(statistic.mood_avg),
-        }
-      end),
+      statistics: render_statistics(language.statistics),
       type: language.type,
       occurrences: language.occurrences,
       moodAvg: format_mood_avg(language.mood_avg),
@@ -26,4 +21,15 @@ defmodule TwitterDevMood.Api.LanguageView do
   end
 
   defp format_mood_avg(mood_avg), do: Float.round(mood_avg, 4)
+
+  defp format_date(datetime) do
+    datetime
+    |> Ecto.DateTime.to_erl
+    |> :calendar.datetime_to_gregorian_seconds
+    |> Kernel.-(62167219200)
+  end
+
+  defp render_statistics(statistics) do
+    TwitterDevMood.Api.StatisticView.render("index.json", %{statistics: statistics})
+  end
 end
