@@ -60,8 +60,9 @@ defmodule TwitterDevMood.Language do
   end
 
   def preload_statistics(query \\ Language) do
+    statistics_query = from s in Statistic, order_by: [desc: s.inserted_at]
     from l in query,
-    preload: :statistics
+    preload: [statistics: ^statistics_query]
   end
 
   def has_keywords(query, keywords) do
