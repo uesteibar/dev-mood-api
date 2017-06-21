@@ -13,7 +13,6 @@ defmodule TwitterDevMood.Api.LanguageView do
       id: language.id,
       name: language.name,
       keywords: Enum.map(language.keywords, &(&1.keyword)),
-      history: render_statistics(language.statistics),
       type: language.type,
       occurrences: language.occurrences,
       moodAvg: format_mood_avg(language.mood_avg),
@@ -21,8 +20,4 @@ defmodule TwitterDevMood.Api.LanguageView do
   end
 
   defp format_mood_avg(mood_avg), do: Float.round(mood_avg, 4)
-
-  defp render_statistics(statistics) do
-    TwitterDevMood.Api.StatisticView.render("index.json", %{statistics: statistics})
-  end
 end
